@@ -1,0 +1,7 @@
+You can test it easily.
+
+image::test-event.png[]
+
+You should see a 200 response:
+
+image::test-result.png[]

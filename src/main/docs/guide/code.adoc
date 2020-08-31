@@ -1,0 +1,43 @@
+We want to support a JavaBean as input and output types.
+
+The input is a  `Book` object:
+
+[source,kotlin]
+.src/main/kotlin/example/micronaut/Book.kt
+----
+include::{sourceDir}/src/main/kotlin/example/micronaut/Book.kt[]
+----
+
+<1> Annotate the class with `@Introspected` to generate the Bean Metainformation at compile time.
+
+The output is a `BookSaved` object:
+
+[source,kotlin]
+.src/main/kotlin/example/micronaut/BookSaved.kt
+----
+include::{sourceDir}/src/main/kotlin/example/micronaut/BookSaved.kt[]
+----
+
+<1> Annotate the class with `@Introspected` to generate the Bean Metainformation at compile time.
+
+The application contains a class extending https://micronaut-projects.github.io/micronaut-aws/latest/api/io/micronaut/function/aws/MicronautRequestHandler.html[MicronautRequestHandler]
+
+[source,kotlin]
+.src/main/kotlin/example/micronaut/BookRequestHandler.kt
+----
+include::{sourceDir}/src/main/kotlin/example/micronaut/BookRequestHandler.kt[]
+----
+
+<1> The class extends https://micronaut-projects.github.io/micronaut-aws/latest/api/io/micronaut/function/aws/MicronautRequestHandler.html[MicronautRequestHandler] and defines input and output types.
+
+The generated test shows how the verify the function behaviour:
+
+[source,kotlin]
+.src/test/kotlin/example/micronaut/BookRequestHandlerTest.kt
+----
+include::{sourceDir}/src/test/kotlin/example/micronaut/BookRequestHandlerTest.kt[]
+----
+
+<1> When you instantiate the Handler, the application context starts.
+<2> Remember to close your application context when you end your test. You can use your handler to obtain it.
+<3> Invoke the `execute` method of the handler.

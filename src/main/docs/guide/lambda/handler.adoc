@@ -1,0 +1,5 @@
+As Handler, set:
+
+`example.micronaut.BookRequestHandler`
+
+image::handler.png[]
